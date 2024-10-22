@@ -4,6 +4,7 @@ import {Poppins} from "next/font/google";
 import {UserButton} from "@clerk/nextjs";
 import {cn} from "@/lib/utils";
 import {Button} from "@/components/ui/button";
+import { ModeToggle } from "./mode-toggle";
 
 // If loading a variable font, you don't need to specify the font weight
 const font = Poppins({
@@ -13,7 +14,7 @@ const font = Poppins({
 
 export const Navbar = () => {
   return (
-    <div className="fixed w-full z-50 justify-between items-center py-2 px-4 border-b border-primary/10 bg-secondary">
+    <div className="fixed flex w-full z-50 justify-between items-center py-2 px-4 border-b border-primary/10 bg-secondary">
       <div className="flex items-center">
         <Menu className="block md:hidden" />
         <Link href="/">
@@ -33,6 +34,7 @@ export const Navbar = () => {
           <Sparkles className="h-4 w-4 fill-white text-white ml-2" />
         </Button>
         <UserButton />
+        <ModeToggle />
       </div>
     </div>
   );
