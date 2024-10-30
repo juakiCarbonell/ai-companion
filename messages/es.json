@@ -1,0 +1,11 @@
+{
+  "HomePage": {
+    "title": "Hola Mundo!"
+  },
+  "languages": {
+    "en": "Inglés",
+    "es": "Español",
+    "enShort": "IN",
+    "esShort": "ES"
+  }
+}

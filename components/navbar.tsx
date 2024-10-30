@@ -7,6 +7,7 @@ import {cn} from "@/lib/utils";
 import {Button} from "@/components/ui/button";
 import {ModeToggle} from "@/components/mode-toggle";
 import {MobileSidebar} from "@/components/mobile-sidebar";
+import { LanguageSelector } from "@/components/language-selector";
 
 // If loading a variable font, you don't need to specify the font weight
 const font = Poppins({
@@ -35,6 +36,7 @@ export const Navbar = () => {
           Upgrade
           <Sparkles className="h-4 w-4 fill-white text-white ml-2" />
         </Button>
+        <LanguageSelector />
         <UserButton />
         <ModeToggle />
       </div>
