@@ -2,10 +2,30 @@
   "HomePage": {
     "title": "Hola Mundo!"
   },
+  "theme": {
+    "system": "Sistema",
+    "light": "Claro",
+    "dark": "Oscuro"
+  },
   "languages": {
     "en": "Inglés",
     "es": "Español",
     "enShort": "IN",
     "esShort": "ES"
+  },
+  "categories": {
+    "famous": "Famosos",
+    "movies": "Películas & TV",
+    "musicians": "Músicos",
+    "games": "Juegos",
+    "animals": "Animales",
+    "philosophy": "Filósofos",
+    "scientist": "Científicos",
+    "new": "Nuevo"
+  },
+  "sidebar": {
+    "home": "Home",
+    "create": "Crear",
+    "settings": "Ajustes"
   }
 }

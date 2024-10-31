@@ -3,6 +3,7 @@
 import {cn} from "@/lib/utils";
 
 import {Category} from "@prisma/client";
+import { useTranslations } from "next-intl";
 import {useRouter, useSearchParams} from "next/navigation";
 import qs from "query-string";
 
@@ -12,6 +13,8 @@ interface CategoriesProps {
 
 export const Categories = ({data}: CategoriesProps) => {
   const router = useRouter();
+  const t = useTranslations("categories");
+  console.log('data', data)
   const searchParams = useSearchParams();
   const categoryId = searchParams.get("categoryId");
 
@@ -50,7 +53,7 @@ export const Categories = ({data}: CategoriesProps) => {
           !categoryId ? "bg-primary/25" : "bg-primary/10"
         )}
       >
-        Newest
+        {t("new")}
       </button>
       {data.map((category) => (
         <button
@@ -75,7 +78,7 @@ export const Categories = ({data}: CategoriesProps) => {
             categoryId === category.id ? "bg-primary/25" : "bg-primary/10"
           )}
         >
-          {category.name}
+          {t(category.name)}
         </button>
       ))}
     </div>

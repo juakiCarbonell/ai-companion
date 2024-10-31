@@ -2,10 +2,30 @@
   "HomePage": {
     "title": "Hello world!"
   },
+  "theme": {
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark"
+  },
   "languages": {
     "en": "English",
     "es": "Spanish",
     "enShort": "EN",
     "esShort": "SP"
+  },
+  "categories": {
+    "famous": "Famous people",
+    "movies": "Movies & TV",
+    "musicians": "Musicians",
+    "games": "Games",
+    "animals": "Animals",
+    "philosophy": "Philosophy",
+    "scientist": "Scientist",
+    "new": "Newest"
+  },
+  "sidebar": {
+    "home": "Home",
+    "create": "Create",
+    "settings": "Settings"
   }
 }

@@ -1,19 +1,20 @@
-const {PrismaClient} = require("@prisma/client");
-// import { PrismaClient } from "@prisma/client";
+// const {PrismaClient} = require("@prisma/client");
+import { PrismaClient } from "@prisma/client";
 
 const db = new PrismaClient();
 
 async function main() {
+  await db.category.deleteMany({});
   try {
     await db.category.createMany({
       data: [
-        {name: "Famous People"},
-        {name: "Movies & TV"},
-        {name: "Musicians"},
-        {name: "Games"},
-        {name: "Animals"},
-        {name: "Philosophy"},
-        {name: "Scientist"},
+        {name: "famous"},
+        {name: "movies"},
+        {name: "musicians"},
+        {name: "games"},
+        {name: "animals"},
+        {name: "philosophy"},
+        {name: "scientist"},
       ],
     });
   } catch (error) {

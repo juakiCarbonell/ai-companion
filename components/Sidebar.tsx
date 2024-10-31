@@ -4,22 +4,23 @@ import {Home, Plus, Settings} from "lucide-react";
 import {usePathname, useRouter} from "next/navigation";
 
 import {cn} from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 const routes = [
   {
-    label: "Home",
+    label: "home",
     href: "/",
     icon: Home,
     pro: false,
   },
   {
-    label: "Create",
+    label: "create",
     href: "/companion/new",
     icon: Plus,
     pro: true,
   },
   {
-    label: "Settings",
+    label: "settings",
     href: "/settings",
     icon: Settings,
     pro: false,
@@ -29,7 +30,7 @@ const routes = [
 export const Sidebar = () => {
   const pathName = usePathname();
   const router = useRouter();
-
+  const t = useTranslations("sidebar");
   const onNavigate = (url: string) => {
     //TODO: check if pro
     router.push(url);
@@ -50,7 +51,7 @@ export const Sidebar = () => {
             >
               <div className="flex flex-col gap-y-2 items-center flex-1">
                 <route.icon className="h-5 w-5" />
-                {route.label}
+                {t(route.label)}
               </div>
             </div>
           ))}
