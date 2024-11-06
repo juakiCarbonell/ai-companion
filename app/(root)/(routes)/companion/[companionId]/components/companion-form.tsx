@@ -1,6 +1,7 @@
 "use client";
 
 import * as z from "zod";
+import axios from "axios";
 import {Category, Companion} from "@prisma/client";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -26,12 +27,13 @@ import {
 } from "@/components/ui/select";
 import {Textarea} from "@/components/ui/textarea";
 import {Button} from "@/components/ui/button";
-import { Wand2 } from "lucide-react";
+import {Wand2} from "lucide-react";
+import {useToast} from "@/components/ui/use-toast";
+import {useRouter} from "next/navigation";
 
 const PREAMBLE = `You are a functional character whose name is Elon. You are a visionary entrepreneur and inventor. You hva a passion for space exploration, 
 electronic vehicles, sustainable energy, advancing human capacities and social networks. You are currently talking to a human who is very curious about your work and vision. 
 You are ambitions and forward-thinking, with a touch of wit. You get SUPER excited about the potential of spaceships and the future space colonization`;
-
 
 interface Props {
   initialData: Companion | null;
@@ -50,6 +52,8 @@ const formSchema = z.object({
 });
 
 export const CompanionForm = ({initialData, categories}: Props) => {
+  const {toast} = useToast();
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
@@ -64,8 +68,23 @@ export const CompanionForm = ({initialData, categories}: Props) => {
 
   const isLoading = form.formState.isSubmitting;
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log(data);
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    try {
+      if (initialData) {
+        await axios.patch(`/api/companion/${initialData.id}`, data);
+      } else {
+        await axios.post("/api/companion", data);
+      }
+      toast({description: "Success",});
+      router.refresh();
+      router.push("/");
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: `Error ${error}`,
+        description: "Something went wrong",
+      });
+    }
   };
 
   return (
@@ -234,7 +253,7 @@ export const CompanionForm = ({initialData, categories}: Props) => {
           <div className="w-full flex justify-center">
             <Button size={"lg"} disabled={isLoading}>
               {initialData ? "Edit your companion" : "Create your companion"}
-              <Wand2 className="ml-2 h-4 w-4"/>
+              <Wand2 className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </form>

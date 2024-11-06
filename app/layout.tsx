@@ -7,6 +7,7 @@ import {getLocale, getMessages} from "next-intl/server";
 
 import {ThemeProvider} from "@/components/theme-provider";
 import {cn} from "@/lib/utils";
+import {Toaster} from "@/components/ui/toaster";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -29,6 +30,7 @@ export default async function RootLayout({
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <NextIntlClientProvider messages={messages}>
               {children}
+              <Toaster />
             </NextIntlClientProvider>
           </ThemeProvider>
         </body>
